@@ -30,4 +30,21 @@ describe('BowlingGame', function() {
     expect(game.score()).toEqual(16);
   })
 
+  it('can score a strike followed by two 3s', function() {
+    game.roll(10)
+    game.roll(3)
+    game.roll(3)
+    for (let i = 0; i < 17; i++) {
+      game.roll(0)
+    }
+    expect(game.score()).toEqual(22);
+  })
+
+  it('can score a perfect game', function() {
+    for (let i = 0; i < 12; i++) {
+      game.roll(10)
+    }
+    expect(game.score()).toEqual(300)
+  })
+
 })
