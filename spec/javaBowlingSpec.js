@@ -6,11 +6,6 @@ describe('BowlingGame', function() {
     game = new BowlingGame();
   });
 
-  it('should roll the ball', function() {
-    game.roll(7)
-    expect(game.score()).toEqual(7)
-  })
-
   it('should return calculate a gutter game', function() {
     for (let i = 0; i < 20; i++) {
       game.roll(0)
@@ -24,5 +19,15 @@ describe('BowlingGame', function() {
     }
     expect(game.score()).toEqual(20);
   });
+
+  it('can score a spare followed by a 3', function() {
+    game.roll(5)
+    game.roll(5)
+    game.roll(3)
+    for (let i = 0; i < 17; i++) {
+      game.roll(0)
+    }
+    expect(game.score()).toEqual(16);
+  })
 
 })
